@@ -98,9 +98,8 @@ Graphs are stored as JSON files in `src/data/` directory. Each file contains:
 ### Available Graphs
 
 1. **consciousness_graph.json** – Philosophy of mind (Bewusstsein) – *default*
-2. **philosophical-concepts.json** – Steiner's philosophical problem
-3. **system-architecture.json** – Microservices architecture example
-4. **empty-graph.json** – Empty template ready to fill
+2. **system-architecture.json** – Microservices architecture
+3. **empty-graph.json** – Empty template ready to fill
 
 ### Managing Graphs
 
