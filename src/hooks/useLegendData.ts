@@ -3,7 +3,8 @@ import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
 
 export interface GroupLegendItem {
-  id: number;
+  /** Group key (number as string, or direct label string). */
+  id: string;
   label: string;
   color: string;
   count: number;
@@ -20,34 +21,37 @@ export function useLegendData(): {
   linkTypes: LinkTypeLegendItem[];
 } {
   const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
-  const sharedGraph = useGraphStore((state) => state.sharedGraph);
-  const currentGraphId = useGraphStore((state) => state.currentGraphId);
-  const availableGraphs = useGraphStore((state) => state.availableGraphs);
-  const { getGroupColor, getLinkColor } = useColorMap();
-
-  const metadata = useMemo(() => {
-    if (sharedGraph?.metadata) return sharedGraph.metadata;
-    const file = availableGraphs.find((g) => g.id === currentGraphId);
-    return file?.metadata;
-  }, [sharedGraph?.metadata, currentGraphId, availableGraphs]);
+  const { getGroupColor, getGroupLabel, getLinkColor } = useColorMap();
 
   return useMemo(() => {
-    const groupCounts = new Map<number, number>();
+    const groupCounts = new Map<string, number>();
     for (const node of graphData.nodes) {
-      const g = node.group;
-      if (g != null && !Number.isNaN(Number(g))) {
-        groupCounts.set(Number(g), (groupCounts.get(Number(g)) ?? 0) + 1);
+      const key =
+        node.group == null
+          ? null
+          : typeof node.group === "number"
+            ? Number.isNaN(node.group)
+              ? null
+              : String(node.group)
+            : String(node.group).trim();
+      if (key !== null && key !== "") {
+        groupCounts.set(key, (groupCounts.get(key) ?? 0) + 1);
       }
     }
-    const groupLabels = metadata?.groupLabels;
-    const groups: GroupLegendItem[] = Array.from(groupCounts.entries())
-      .sort(([a], [b]) => a - b)
-      .map(([id, count]) => ({
-        id,
-        label: groupLabels?.[String(id)] ?? `Group ${id}`,
-        color: getGroupColor(id),
-        count,
-      }));
+    const groupKeys = Array.from(groupCounts.keys()).sort((a, b) => {
+      const aNum = Number(a);
+      const bNum = Number(b);
+      if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) return aNum - bNum;
+      if (!Number.isNaN(aNum)) return -1;
+      if (!Number.isNaN(bNum)) return 1;
+      return a.localeCompare(b);
+    });
+    const groups: GroupLegendItem[] = groupKeys.map((id) => ({
+      id,
+      label: getGroupLabel(id),
+      color: getGroupColor(id),
+      count: groupCounts.get(id)!,
+    }));
 
     const linkCounts = new Map<string, number>();
     for (const link of graphData.links) {
@@ -66,5 +70,5 @@ export function useLegendData(): {
       }));
 
     return { groups, linkTypes };
-  }, [graphData, metadata, getGroupColor, getLinkColor]);
+  }, [graphData, getGroupColor, getGroupLabel, getLinkColor]);
 }

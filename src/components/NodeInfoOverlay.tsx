@@ -12,7 +12,7 @@ interface NodeInfoOverlayProps {
 export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const { getGroupColor } = useColorMap();
+  const { getGroupColor, getGroupLabel } = useColorMap();
   const node = useGraphStore((state) => state.selectedNode);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
                   </h3>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Group {node.group} • ID: {node.id}
+                  {getGroupLabel(node.group)} • ID: {node.id}
                 </p>
               </div>
               <div className="flex items-center gap-1 ml-2">

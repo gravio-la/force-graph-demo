@@ -6,7 +6,8 @@ export interface GraphNode {
   id: string;
   name: string;
   description?: string;
-  group: number;
+  /** Group id (number) or direct group label (string). */
+  group: number | string;
   x?: number;
   y?: number;
   z?: number;

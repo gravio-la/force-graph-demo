@@ -10,7 +10,7 @@ export interface GraphNode {
   id: string;
   name: string;
   description?: string;
-  group: number;
+  group: number | string;
   x?: number;
   y?: number;
   z?: number;

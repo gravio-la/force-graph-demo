@@ -47,7 +47,7 @@ export function CosmographGraph() {
       );
     });
 
-    const points: Array<{ id: string; idx: number; name: string; group: number }> =
+    const points: Array<{ id: string; idx: number; name: string; group: number | string }> =
       filteredNodes.map((node, i) => ({
         id: node.id,
         idx: i,
@@ -93,7 +93,7 @@ export function CosmographGraph() {
       backgroundColor: "#0a0a0a",
       pointColorBy: "group",
       pointColorStrategy: "direct",
-      pointColorByFn: (value: unknown) => getGroupColor(Number(value) ?? 1),
+      pointColorByFn: (value: unknown) => getGroupColor(value as number | string),
       linkColorBy: "label",
       linkColorStrategy: "direct",
       linkColorByFn: (value: unknown) => getLinkColor(value as string),

@@ -57,7 +57,7 @@ export function GroupLegendOverlay({ groups }: GroupLegendOverlayProps) {
             </p>
             <OverlayList
               items={groups}
-              getItemKey={(g) => String(g.id)}
+              getItemKey={(g) => g.id}
               renderItem={(g) => (
                 <div className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
                   <div
