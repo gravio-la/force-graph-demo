@@ -7,12 +7,15 @@
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import NiceModal from "@ebay/nice-modal-react";
 import { App } from "./App";
 
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
-    <App />
+    <NiceModal.Provider>
+      <App />
+    </NiceModal.Provider>
   </StrictMode>
 );
 

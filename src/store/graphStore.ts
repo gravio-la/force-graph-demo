@@ -1,4 +1,5 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { useCustomGraphsStore } from "./customGraphsStore";
 
 export interface GraphNode {
   id: string;
@@ -38,15 +39,18 @@ interface GraphStore {
   graphData: GraphData;
   selectedNode: GraphNode | null;
   searchQuery: string;
-  visualizationMode: '3d' | '2d';
+  visualizationMode: "3d" | "2d";
   currentGraphId: string;
   availableGraphs: GraphFile[];
+  builtInGraphs: GraphFile[];
   setSelectedNode: (node: GraphNode | null) => void;
   setSearchQuery: (query: string) => void;
-  setVisualizationMode: (mode: '3d' | '2d') => void;
+  setVisualizationMode: (mode: "3d" | "2d") => void;
   setGraphData: (data: GraphData) => void;
   loadGraph: (graphId: string) => Promise<void>;
   setAvailableGraphs: (graphs: GraphFile[]) => void;
+  setBuiltInGraphs: (builtIn: GraphFile[]) => void;
+  mergeCustomGraphs: () => void;
 }
 
 // Initial graph data - Philosophical concepts
@@ -161,17 +165,35 @@ const initialGraphData: GraphData = {
 export const useGraphStore = create<GraphStore>((set, get) => ({
   graphData: initialGraphData,
   selectedNode: null,
-  searchQuery: '',
-  visualizationMode: '3d',
-  currentGraphId: 'philosophical-concepts',
+  searchQuery: "",
+  visualizationMode: "3d",
+  currentGraphId: "philosophical-concepts",
   availableGraphs: [],
-  
+  builtInGraphs: [],
+
   setSelectedNode: (node) => set({ selectedNode: node }),
   setSearchQuery: (query) => set({ searchQuery: query }),
   setVisualizationMode: (mode) => set({ visualizationMode: mode }),
   setGraphData: (data) => set({ graphData: data }),
   setAvailableGraphs: (graphs) => set({ availableGraphs: graphs }),
-  
+
+  setBuiltInGraphs: (builtIn) =>
+    set({
+      builtInGraphs: builtIn,
+      availableGraphs: [
+        ...builtIn,
+        ...useCustomGraphsStore.getState().customGraphs,
+      ],
+    }),
+
+  mergeCustomGraphs: () =>
+    set({
+      availableGraphs: [
+        ...get().builtInGraphs,
+        ...useCustomGraphsStore.getState().customGraphs,
+      ],
+    }),
+
   loadGraph: async (graphId: string) => {
     const graphs = get().availableGraphs;
     const graphFile = graphs.find(g => g.id === graphId);
