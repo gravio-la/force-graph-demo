@@ -4,17 +4,22 @@ import type { ForceGraphInstance } from "3d-force-graph";
 import * as THREE from "three";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { Text } from "troika-three-text";
-import { getGroupColor } from "@/lib/groupColors";
+import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
 import { useSettingsStore } from "@/store/settingsStore";
 
 /** LOD threshold: only show edge labels when camera distance to midpoint is below this */
 const EDGE_LABEL_LOD_THRESHOLD = 500;
 
+function hexToNumber(hex: string): number {
+  const s = hex.startsWith("#") ? hex.slice(1) : hex;
+  return parseInt(s, 16);
+}
+
 export function ForceGraph3DComponent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<ForceGraphInstance | null>(null);
-  
+  const { getGroupColor, getLinkColor } = useColorMap();
   const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
@@ -42,12 +47,13 @@ export function ForceGraph3DComponent() {
         const nodeEl = document.createElement('div');
         nodeEl.textContent = node.name || node.id;
         nodeEl.className = 'node-label-3d';
-        nodeEl.style.color = node.color || '#4a9eff';
+        nodeEl.style.color = getGroupColor(node.group);
         nodeEl.style.fontSize = `${settings.nodeLabelFontSize}px`;
         
         return new CSS2DObject(nodeEl);
       })
       .nodeThreeObjectExtend(true)
+      .linkColor((link: any) => getLinkColor(link.label))
       .linkWidth(settings.linkWidth)
       .linkOpacity(settings.linkOpacity)
       .linkDirectionalParticles(0) // Disable animated particles
@@ -123,7 +129,7 @@ export function ForceGraph3DComponent() {
         graphRef.current._destructor();
       }
     };
-  }, [graphData, setSelectedNode, settings, incrementor]);
+  }, [graphData, setSelectedNode, settings, incrementor, getGroupColor, getLinkColor]);
 
   // Handle search filtering
   useEffect(() => {

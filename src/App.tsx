@@ -9,9 +9,23 @@ import { GraphSelector } from "./components/GraphSelector";
 import { SettingsFAB } from "./components/SettingsFAB";
 import { SettingsPanel } from "./components/SettingsPanel";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { GroupLegendOverlay } from "./components/GroupLegendOverlay";
+import { LinkLegendOverlay } from "./components/LinkLegendOverlay";
+import { ColorMapProvider } from "./context/ColorMapContext";
+import { useLegendData } from "./hooks/useLegendData";
 import { useGraphStore } from "./store/graphStore";
 import { decode, stripSimulationState } from "./lib/graphHash";
 import "./index.css";
+
+function LegendOverlays() {
+  const { groups, linkTypes } = useLegendData();
+  return (
+    <>
+      <GroupLegendOverlay groups={groups} />
+      <LinkLegendOverlay linkTypes={linkTypes} />
+    </>
+  );
+}
 
 function useHashGraphSync() {
   const setSharedGraph = useGraphStore((state) => state.setSharedGraph);
@@ -56,37 +70,42 @@ export function App() {
 
   return (
     <ErrorBoundary>
-      <div className="fixed inset-0 w-full h-full bg-background overflow-hidden">
-        {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
-        {/* Key includes currentGraphId to force remount on graph change */}
-        {visualizationMode === "3d" ? (
-          <ForceGraph3DComponent key={`3d-${graphKey}`} />
-        ) : visualizationMode === "cosmo" ? (
-          <CosmographGraph key={`cosmo-${graphKey}`} />
-        ) : (
-          <SigmaGraph key={`2d-${graphKey}`} />
-        )}
-        
-        {/* Graph Selector - Top left */}
-        <GraphSelector />
-        
-        {/* Search Overlay - Top right */}
-        <SearchOverlay />
-        
-        {/* Node Info Overlay - Shows below search */}
-        <NodeInfoOverlay onClose={handleCloseNodeInfo} />
-        
-        {/* Visualization Mode Toggle - Bottom center */}
-        <VisualizationToggle />
-        
-        {/* Settings FAB and Panel - Bottom left (only in 3D mode) */}
-        {visualizationMode === "3d" && (
-          <>
-            <SettingsFAB />
-            <SettingsPanel />
-          </>
-        )}
-      </div>
+      <ColorMapProvider>
+        <div className="fixed inset-0 w-full h-full bg-background overflow-hidden">
+          {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
+          {/* Key includes currentGraphId to force remount on graph change */}
+          {visualizationMode === "3d" ? (
+            <ForceGraph3DComponent key={`3d-${graphKey}`} />
+          ) : visualizationMode === "cosmo" ? (
+            <CosmographGraph key={`cosmo-${graphKey}`} />
+          ) : (
+            <SigmaGraph key={`2d-${graphKey}`} />
+          )}
+          
+          {/* Graph Selector - Top left */}
+          <GraphSelector />
+          
+          {/* Search Overlay - Top right */}
+          <SearchOverlay />
+          
+          {/* Node Info Overlay - Shows below search */}
+          <NodeInfoOverlay onClose={handleCloseNodeInfo} />
+          
+          {/* Legend overlays - Bottom left (groups), Bottom right (link types) */}
+          <LegendOverlays />
+          
+          {/* Visualization Mode Toggle - Bottom center */}
+          <VisualizationToggle />
+          
+          {/* Settings FAB and Panel - Bottom left (only in 3D mode) */}
+          {visualizationMode === "3d" && (
+            <>
+              <SettingsFAB />
+              <SettingsPanel />
+            </>
+          )}
+        </div>
+      </ColorMapProvider>
     </ErrorBoundary>
   );
 }

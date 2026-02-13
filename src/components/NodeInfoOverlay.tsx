@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Info, X, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getGroupColor } from "@/lib/groupColors";
+import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
 
 interface NodeInfoOverlayProps {
@@ -12,7 +12,7 @@ interface NodeInfoOverlayProps {
 export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  
+  const { getGroupColor } = useColorMap();
   const node = useGraphStore((state) => state.selectedNode);
 
   useEffect(() => {

@@ -3,14 +3,14 @@ import Sigma from "sigma";
 import Graph from "graphology";
 import circular from "graphology-layout/circular";
 import forceAtlas2 from "graphology-layout-forceatlas2";
+import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
-import { getGroupColor } from "@/lib/groupColors";
 
 export function SigmaGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sigmaRef = useRef<Sigma | null>(null);
   const graphRef = useRef<Graph | null>(null);
-  
+  const { getGroupColor, getLinkColor } = useColorMap();
   const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
@@ -72,7 +72,7 @@ export function SigmaGraph() {
           graph.addDirectedEdge(sourceId, targetId, {
             label: link.label || "",
             size: 2,
-            color: "#aaaaaa",
+            color: getLinkColor(link.label),
           });
           edgeCount++;
         }
@@ -140,7 +140,7 @@ export function SigmaGraph() {
         graphRef.current.clear();
       }
     };
-  }, [graphData, searchQuery, setSelectedNode]);
+  }, [graphData, searchQuery, setSelectedNode, getGroupColor, getLinkColor]);
 
   return (
     <div

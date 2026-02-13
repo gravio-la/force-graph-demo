@@ -8,7 +8,7 @@ export function SettingsFAB() {
   return (
     <button
       onClick={toggleSettings}
-      className={`fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full shadow-lg 
+      className={`fixed bottom-[5rem] left-6 z-50 w-14 h-14 rounded-full shadow-lg 
         flex items-center justify-center transition-all duration-200 hover:scale-110
         ${showSettings 
           ? 'bg-blue-600 hover:bg-blue-700' 

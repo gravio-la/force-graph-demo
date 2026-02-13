@@ -2,7 +2,17 @@
   "metadata": {
     "name": "Bewusstsein",
     "description": "Bewusstsein",
-    "timestamp": "2026-02-12T19:30:00Z"
+    "timestamp": "2026-02-12T19:30:00Z",
+    "groupLabels": {
+      "1": "Physikalismus-Cluster",
+      "2": "Dualismus / Eigenschaftstheorien",
+      "3": "Monistische Alternativen",
+      "4": "Komputationale / Informationstheorien",
+      "5": "Verkörperte / Ökologische Theorien",
+      "6": "Quantenbewusstseins-Theorien",
+      "7": "Epistemische Grenzen",
+      "8": "Idealismus / Östliche Traditionen"
+    }
   },
   "graph": {
     "nodes": [

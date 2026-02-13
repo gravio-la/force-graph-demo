@@ -27,6 +27,8 @@ export interface GraphMetadata {
   name: string;
   description: string;
   timestamp: string;
+  /** Optional display names for node groups (key = group id as string) */
+  groupLabels?: Record<string, string>;
 }
 
 export interface GraphFile {

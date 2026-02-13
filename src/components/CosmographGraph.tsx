@@ -1,14 +1,15 @@
 import { useMemo } from "react";
 import { Cosmograph } from "@cosmograph/react";
 import type { CosmographConfig } from "@cosmograph/react";
+import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
-import { getGroupColor } from "@/lib/groupColors";
 import type { GraphNode } from "@/store/graphStore";
 
 // Cosmograph has no link/edge label API; only point labels are supported.
 // We pass raw points/links with pointIndexBy and link index columns (like the official Basic usage example).
 
 export function CosmographGraph() {
+  const { getGroupColor, getLinkColor } = useColorMap();
   const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
@@ -59,6 +60,7 @@ export function CosmographGraph() {
       target: string;
       sourceidx: number;
       targetidx: number;
+      label: string;
     }> = filteredLinks.map((link) => {
       const sourceId = getLinkId(link.source)!;
       const targetId = getLinkId(link.target)!;
@@ -67,6 +69,7 @@ export function CosmographGraph() {
         target: targetId,
         sourceidx: idToIndex.get(sourceId)!,
         targetidx: idToIndex.get(targetId)!,
+        label: link.label != null && String(link.label).trim() !== "" ? String(link.label).trim() : "untyped",
       };
     });
 
@@ -90,7 +93,10 @@ export function CosmographGraph() {
       backgroundColor: "#0a0a0a",
       pointColorBy: "group",
       pointColorStrategy: "direct",
-      pointColorByFn: (value: unknown) => getGroupColor(Number(value)),
+      pointColorByFn: (value: unknown) => getGroupColor(Number(value) ?? 1),
+      linkColorBy: "label",
+      linkColorStrategy: "direct",
+      linkColorByFn: (value: unknown) => getLinkColor(value as string),
       pointLabelBy: "name",
       showLabels: true,
       showTopLabels: true,
@@ -109,7 +115,7 @@ export function CosmographGraph() {
         }
       },
     }),
-    [points, links, nodeById, setSelectedNode]
+    [points, links, nodeById, setSelectedNode, getGroupColor, getLinkColor]
   );
 
   return (
