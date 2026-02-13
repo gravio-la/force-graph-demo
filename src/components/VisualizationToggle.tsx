@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Box, Network } from "lucide-react";
+import { Box, Globe, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGraphStore } from "@/store/graphStore";
 
@@ -26,6 +26,18 @@ export function VisualizationToggle() {
         >
           <Box className="h-4 w-4 mr-2" />
           3D View
+        </Button>
+        <Button
+          variant={visualizationMode === "cosmo" ? "default" : "ghost"}
+          size="sm"
+          onClick={() => setVisualizationMode("cosmo")}
+          className={cn(
+            "rounded-full transition-all duration-200",
+            visualizationMode === "cosmo" && "shadow-lg"
+          )}
+        >
+          <Globe className="h-4 w-4 mr-2" />
+          Cosmo (2D)
         </Button>
         <Button
           variant={visualizationMode === "2d" ? "default" : "ghost"}

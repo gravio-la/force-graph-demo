@@ -4,6 +4,7 @@ import Graph from "graphology";
 import circular from "graphology-layout/circular";
 import forceAtlas2 from "graphology-layout-forceatlas2";
 import { useGraphStore } from "@/store/graphStore";
+import { getGroupColor } from "@/lib/groupColors";
 
 export function SigmaGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,20 +14,6 @@ export function SigmaGraph() {
   const graphData = useGraphStore((state) => state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
-
-  // Helper to get color based on group
-  const getGroupColor = (group: number) => {
-    const colors = [
-      "#4a9eff", // blue
-      "#ff6b6b", // red
-      "#51cf66", // green
-      "#ffd43b", // yellow
-      "#a78bfa", // purple
-      "#ff8787", // pink
-      "#38d9a9", // teal
-    ];
-    return colors[(group - 1) % colors.length];
-  };
 
   useEffect(() => {
     if (!containerRef.current) return;

@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "name": "Empty graph",
+    "description": "Empty graph",
+    "timestamp": "2026-02-12T19:30:00Z"
+  },
+  "graph": {
+      "nodes": [],
+      "links": []
+    }
+}

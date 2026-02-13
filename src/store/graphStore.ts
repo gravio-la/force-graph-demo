@@ -40,13 +40,13 @@ interface GraphStore {
   graphData: GraphData;
   selectedNode: GraphNode | null;
   searchQuery: string;
-  visualizationMode: "3d" | "2d";
+  visualizationMode: "3d" | "cosmo" | "2d";
   currentGraphId: string;
   availableGraphs: GraphFile[];
   builtInGraphs: GraphFile[];
   setSelectedNode: (node: GraphNode | null) => void;
   setSearchQuery: (query: string) => void;
-  setVisualizationMode: (mode: "3d" | "2d") => void;
+  setVisualizationMode: (mode: "3d" | "cosmo" | "2d") => void;
   setGraphData: (data: GraphData) => void;
   loadGraph: (graphId: string) => Promise<void>;
   setAvailableGraphs: (graphs: GraphFile[]) => void;

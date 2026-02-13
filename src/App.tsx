@@ -1,4 +1,5 @@
 import { ForceGraph3DComponent } from "./components/ForceGraph3D";
+import { CosmographGraph } from "./components/CosmographGraph";
 import { SigmaGraph } from "./components/SigmaGraph";
 import { SearchOverlay } from "./components/SearchOverlay";
 import { NodeInfoOverlay } from "./components/NodeInfoOverlay";
@@ -22,10 +23,12 @@ export function App() {
   return (
     <ErrorBoundary>
       <div className="fixed inset-0 w-full h-full bg-background overflow-hidden">
-        {/* Visualization - Fullscreen (3D or 2D based on mode) */}
+        {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
         {/* Key includes currentGraphId to force remount on graph change */}
         {visualizationMode === "3d" ? (
           <ForceGraph3DComponent key={`3d-${currentGraphId}`} />
+        ) : visualizationMode === "cosmo" ? (
+          <CosmographGraph key={`cosmo-${currentGraphId}`} />
         ) : (
           <SigmaGraph key={`2d-${currentGraphId}`} />
         )}

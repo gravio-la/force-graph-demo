@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Info, X, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getGroupColor } from "@/lib/groupColors";
 import { useGraphStore } from "@/store/graphStore";
 
 interface NodeInfoOverlayProps {
@@ -25,20 +26,6 @@ export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
   }, [node]);
 
   if (!isVisible || !node) return null;
-
-  // Get color based on group
-  const getGroupColor = (group: number) => {
-    const colors = [
-      "#4a9eff", // blue
-      "#ff6b6b", // red
-      "#51cf66", // green
-      "#ffd43b", // yellow
-      "#a78bfa", // purple
-      "#ff8787", // pink
-      "#38d9a9", // teal
-    ];
-    return colors[(group - 1) % colors.length];
-  };
 
   return (
     <>

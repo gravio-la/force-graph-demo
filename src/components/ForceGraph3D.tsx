@@ -1,10 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ForceGraph3D from "3d-force-graph";
 import type { ForceGraphInstance } from "3d-force-graph";
 import * as THREE from "three";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import { Text } from "troika-three-text";
+import { getGroupColor } from "@/lib/groupColors";
 import { useGraphStore } from "@/store/graphStore";
 import { useSettingsStore } from "@/store/settingsStore";
+
+/** LOD threshold: only show edge labels when camera distance to midpoint is below this */
+const EDGE_LABEL_LOD_THRESHOLD = 500;
 
 export function ForceGraph3DComponent() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,6 +19,7 @@ export function ForceGraph3DComponent() {
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
   const settings = useSettingsStore((state) => state.settings);
+  const [incrementor, setIncrementor] = useState(4);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -24,7 +30,7 @@ export function ForceGraph3DComponent() {
     })(containerRef.current)
       .graphData(graphData)
       .nodeLabel("name")
-      .nodeAutoColorBy("group")
+      .nodeColor((node: any) => getGroupColor(node.group))
       .nodeOpacity(settings.nodeOpacity)
       .nodeThreeObject((node: any) => {
         // Create HTML label element if enabled
@@ -43,26 +49,48 @@ export function ForceGraph3DComponent() {
       .linkOpacity(settings.linkOpacity)
       .linkDirectionalParticles(0) // Disable animated particles
       .linkThreeObject((link: any) => {
-        // Create link label if label exists and enabled
+        // Create true 3D text label if label exists and enabled
         if (!link.label || !settings.showLinkLabels) return null;
-        
-        const linkEl = document.createElement('div');
-        linkEl.textContent = link.label;
-        linkEl.className = 'link-label-3d';
-        linkEl.style.color = '#888';
-        linkEl.style.fontSize = `${settings.linkLabelFontSize}px`;
-        
-        return new CSS2DObject(linkEl);
+
+        const troikaText = new Text();
+        troikaText.text = link.label;
+        troikaText.fontSize = settings.linkLabelFontSize * 0.25; // Convert px to scene units
+        troikaText.color = 0xffff00;
+        troikaText.anchorX = "center";
+        troikaText.anchorY = "middle";
+        troikaText.maxWidth = 200;
+        troikaText.sync();
+
+        return troikaText;
       })
       .linkThreeObjectExtend(true)
-      .linkPositionUpdate((sprite: any, { start, end }: any) => {
-        // Position the label at the midpoint of the link
-        const middlePos = {
-          x: start.x + (end.x - start.x) / 2,
-          y: start.y + (end.y - start.y) / 2,
-          z: start.z + (end.z - start.z) / 2
-        };
-        Object.assign(sprite.position, middlePos);
+      .linkPositionUpdate((obj: THREE.Object3D, { start, end }: any, link: any) => {
+        // Midpoint
+        const mid = new THREE.Vector3(
+          (start.x + end.x) / 2,
+          (start.y + end.y) / 2,
+          (start.z + end.z) / 2
+        );
+        obj.position.copy(mid);
+
+        // Orient along edge: lookAt(target) then rotate 90° on X so text lies flat along edge
+        obj.lookAt(0, 0, 0);
+        obj.rotateY(Math.PI / 2);
+        obj.rotateX(Math.PI / 2);
+        obj.rotateZ(Math.PI / 2);
+
+        // LOD: hide labels beyond camera distance threshold
+        const camera = graph.camera();
+        const distance = mid.distanceTo(camera.position);
+        obj.visible = distance < EDGE_LABEL_LOD_THRESHOLD;
+
+        // Optional: scale font size inversely with distance for depth cue
+        if (obj.visible && typeof obj.sync === "function") {
+          const baseSize = settings.linkLabelFontSize * 0.25;
+          const scale = Math.max(0.5, 1 - distance / EDGE_LABEL_LOD_THRESHOLD);
+          obj.fontSize = baseSize * scale;
+          obj.sync();
+        }
       })
       .backgroundColor("#0a0a0a")
       .width(containerRef.current.clientWidth)
@@ -91,7 +119,7 @@ export function ForceGraph3DComponent() {
         graphRef.current._destructor();
       }
     };
-  }, [graphData, setSelectedNode, settings]);
+  }, [graphData, setSelectedNode, settings, incrementor]);
 
   // Handle search filtering
   useEffect(() => {

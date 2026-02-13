@@ -6,10 +6,11 @@ A fullscreen interactive force graph visualization application with **dual visua
 
 ## Features
 
-- **Dual Visualization Modes (3D & 2D)**
+- **Three Visualization Modes (3D, Cosmo, 2D)**
   - 🎲 **3D Force Graph** – Interactive 3D exploration with `3d-force-graph` and Three.js
+  - 🌐 **Cosmo** – GPU-accelerated graph view with Cosmograph
   - 🔗 **2D Network Graph** – Flat network view with Sigma.js and Graphology
-  - Switch between modes anytime with the bottom-center toggle – both views stay in sync
+  - Switch between modes anytime with the bottom-center toggle – all views stay in sync
 
 - **Multiple Graph Management**
   - 📊 Store multiple graphs in separate JSON files
@@ -42,6 +43,7 @@ A fullscreen interactive force graph visualization application with **dual visua
 - **Framework**: React 19
 - **Styling**: Tailwind CSS 4 + shadcn/ui
 - **3D Visualization**: 3d-force-graph + Three.js
+- **Cosmo Visualization**: Cosmograph (@cosmograph/react)
 - **2D Visualization**: Sigma.js + Graphology
 - **State**: Zustand
 - **UI Components**: Radix UI (via shadcn), CodeMirror (YAML graph editor)
@@ -68,13 +70,17 @@ bun run start
 src/
 ├── components/
 │   ├── ForceGraph3D.tsx       # 3D force graph visualization
+│   ├── CosmographGraph.tsx    # Cosmo (Cosmograph) visualization
 │   ├── SigmaGraph.tsx         # 2D network graph visualization
 │   ├── SearchOverlay.tsx      # Search and filter UI
 │   ├── NodeInfoOverlay.tsx    # Node details panel
-│   ├── VisualizationToggle.tsx # 2D/3D mode switch
+│   ├── VisualizationToggle.tsx # 3D / Cosmo / 2D mode switch
 │   ├── GraphSelector.tsx      # Multi-graph dropdown selector
 │   ├── GraphEditorModal.tsx   # Add/edit graphs (YAML)
 │   └── ui/                    # shadcn components
+├── lib/
+│   ├── groupColors.ts         # Central node group color palette
+│   └── utils.ts               # Utilities
 ├── data/
 │   ├── consciousness_graph.json   # Default graph – philosophy of mind
 │   ├── philosophical-concepts.json # Steiner's philosophy graph
@@ -138,9 +144,7 @@ Quick start:
 ## Customization
 
 ### Colors
-Node colors are defined by group (1-7). Edit the `getGroupColor` function in:
-- `src/components/SigmaGraph.tsx` (for 2D)
-- `src/components/NodeInfoOverlay.tsx` (for info panel)
+Node colors are defined by group (1-7). All views (3D, Cosmo, 2D) and the node info panel use a central palette. Edit `getGroupColor` and `GROUP_COLOR_PALETTE` in **`src/lib/groupColors.ts`**.
 
 ### Labels
 - Node labels: Always visible in both 3D and 2D

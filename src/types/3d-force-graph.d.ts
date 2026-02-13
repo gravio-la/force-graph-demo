@@ -40,6 +40,7 @@ declare module '3d-force-graph' {
     graphData(data: GraphData): ForceGraphInstance;
     nodeLabel(label: string | ((node: NodeObject) => string)): ForceGraphInstance;
     nodeAutoColorBy(field: string | ((node: NodeObject) => string)): ForceGraphInstance;
+    nodeColor(color: string | ((node: NodeObject) => string)): ForceGraphInstance;
     nodeOpacity(opacity: number): ForceGraphInstance;
     nodeThreeObject(callback: (node: NodeObject) => Object3D | null): ForceGraphInstance;
     nodeThreeObjectExtend(extend: boolean): ForceGraphInstance;
@@ -56,6 +57,7 @@ declare module '3d-force-graph' {
     width(width: number): ForceGraphInstance;
     height(height: number): ForceGraphInstance;
     onNodeClick(callback: (node: NodeObject, event?: MouseEvent) => void): ForceGraphInstance;
+    camera(): import("three").Camera;
     _destructor(): void;
     [key: string]: any;
   }
