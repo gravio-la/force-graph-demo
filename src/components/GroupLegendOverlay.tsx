@@ -18,7 +18,7 @@ export function GroupLegendOverlay({ groups }: GroupLegendOverlayProps) {
     <>
       {!isExpanded && (
         <div className={cn(
-          "fixed bottom-6 left-6 z-40",
+          "fixed bottom-20 sm:bottom-6 left-6 z-40",
           "transition-transform duration-500 ease-in-out md:translate-x-0",
           isFocusMode && "-translate-x-[200%]"
         )}>
@@ -40,7 +40,7 @@ export function GroupLegendOverlay({ groups }: GroupLegendOverlayProps) {
 
       {isExpanded && (
         <div className={cn(
-          "fixed bottom-6 left-6 z-40 w-56",
+          "fixed bottom-20 sm:bottom-6 left-6 z-40 w-56",
           "transition-transform duration-500 ease-in-out md:translate-x-0",
           isFocusMode && "-translate-x-[200%]"
         )}>
