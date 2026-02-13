@@ -6,8 +6,7 @@ import { SearchOverlay } from "./components/SearchOverlay";
 import { NodeInfoOverlay } from "./components/NodeInfoOverlay";
 import { VisualizationToggle } from "./components/VisualizationToggle";
 import { GraphSelector } from "./components/GraphSelector";
-import { SettingsFAB } from "./components/SettingsFAB";
-import { SettingsPanel } from "./components/SettingsPanel";
+import { ForceGraph3DSettingsModal } from "./components/ForceGraph3DSettingsModal";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { GroupLegendOverlay } from "./components/GroupLegendOverlay";
 import { LinkLegendOverlay } from "./components/LinkLegendOverlay";
@@ -97,13 +96,8 @@ export function App() {
           {/* Visualization Mode Toggle - Bottom center */}
           <VisualizationToggle />
           
-          {/* Settings FAB and Panel - Bottom left (only in 3D mode) */}
-          {visualizationMode === "3d" && (
-            <>
-              <SettingsFAB />
-              <SettingsPanel />
-            </>
-          )}
+          {/* 3D Settings Modal - shown when 3D mode is active */}
+          {visualizationMode === "3d" && <ForceGraph3DSettingsModal />}
         </div>
       </ColorMapProvider>
     </ErrorBoundary>

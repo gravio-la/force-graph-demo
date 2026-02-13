@@ -1,5 +1,12 @@
 import { create } from 'zustand';
 
+// DEPRECATED: This store is no longer used by the 3D Force Graph.
+// The 3D Force Graph now uses forceGraph3DSettingsStore.ts instead.
+// 
+// This file is kept for potential future use by Cosmograph or Sigma (2D) visualizations.
+// If you need to add settings for those visualizations, you can use this as a template
+// or create visualization-specific stores similar to forceGraph3DSettingsStore.ts
+
 export interface GraphSettings {
   nodeLabelFontSize: number;
   linkLabelFontSize: number;

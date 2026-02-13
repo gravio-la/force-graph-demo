@@ -6,7 +6,7 @@ import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRe
 import { Text } from "troika-three-text";
 import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
-import { useSettingsStore } from "@/store/settingsStore";
+import { useForceGraph3DSettingsStore } from "@/store/forceGraph3DSettingsStore";
 
 /** LOD threshold: only show edge labels when camera distance to midpoint is below this */
 const EDGE_LABEL_LOD_THRESHOLD = 500;
@@ -23,7 +23,7 @@ export function ForceGraph3DComponent() {
   const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
-  const settings = useSettingsStore((state) => state.settings);
+  const settings = useForceGraph3DSettingsStore((state) => state.settings);
   const [incrementor, setIncrementor] = useState(4);
 
   useEffect(() => {
@@ -102,14 +102,19 @@ export function ForceGraph3DComponent() {
           obj.sync();
         }
       })
-      .backgroundColor("#0a0a0a")
+      .backgroundColor(settings.backgroundColor)
       .width(containerRef.current.clientWidth)
       .height(containerRef.current.clientHeight)
+      .cooldownTicks(settings.cooldownTicks)
       .onNodeClick((node: any) => {
         setSelectedNode(node);
       });
 
     graphRef.current = graph;
+
+    // Configure physics forces
+    graph.d3Force('link')?.distance(settings.linkDistance);
+    graph.d3Force('charge')?.strength(settings.chargeStrength);
 
     // Handle window resize
     const handleResize = () => {

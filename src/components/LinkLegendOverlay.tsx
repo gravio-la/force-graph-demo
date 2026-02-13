@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link2, ChevronUp } from "lucide-react";
+import { Link2, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OverlayList } from "@/components/OverlayList";
 import type { LinkTypeLegendItem } from "@/hooks/useLegendData";
@@ -49,7 +49,7 @@ export function LinkLegendOverlay({ linkTypes }: LinkLegendOverlayProps) {
                 onClick={() => setIsExpanded(false)}
                 className="h-7 w-7 shrink-0"
               >
-                <ChevronUp className="h-4 w-4" />
+                <ChevronDown className="h-4 w-4" />
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mb-2">
