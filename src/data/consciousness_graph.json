@@ -1,0 +1,1028 @@
+{
+  "metadata": {
+    "name": "Bewusstsein",
+    "description": "Bewusstsein",
+    "timestamp": "2026-02-12T19:30:00Z"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "materialism",
+        "name": "Materialism / Physicalism",
+        "description": "Bewusstsein ist ein rein physisches Phänomen — bewusste Erfahrungen sind Gehirnzustände, phänomenale Eigenschaften sind physische Eigenschaften dieser Zustände.",
+        "group": 1
+      },
+      {
+        "id": "property_dualism",
+        "name": "Property Dualism",
+        "description": "Es gibt nur eine Substanz, aber sie besitzt sowohl physische als auch phänomenale (nicht-physische) Eigenschaften — die 'Röte' einer Erfahrung ist von jeder physischen Eigenschaft verschieden.",
+        "group": 2
+      },
+      {
+        "id": "panpsychism",
+        "name": "Panpsychism",
+        "description": "Proto-phänomenale oder phänomenale Eigenschaften sind in allen fundamentalen physischen Entitäten vorhanden — sie kombinieren sich nur in wenigen makroskopischen Systemen zu bewusster Erfahrung.",
+        "group": 2
+      },
+      {
+        "id": "illusionism",
+        "name": "Illusionism",
+        "description": "Bewusstsein existiert nicht (starker Illusionismus) oder wir irren uns grundlegend über seine Merkmale (schwacher Illusionismus) — Introspektion stellt quasi-phänomenale Eigenschaften fälschlich als phänomenal dar.",
+        "group": 1
+      },
+      {
+        "id": "neutral_monism",
+        "name": "Neutral Monism",
+        "description": "Geist und Materie sind beide abgeleitet aus einer neutralen Grundsubstanz — Machs 'Empfindungen', James' 'reine Erfahrung', Russells Hirnzustände als gleichzeitig mentale und physische Entitäten.",
+        "group": 3
+      },
+      {
+        "id": "russellian_monism",
+        "name": "Russellian Monism",
+        "description": "Physik beschreibt nur relationale/strukturelle Eigenschaften der Materie — intrinsische nicht-strukturelle Eigenschaften ('Quidditäten') existieren und begründen Bewusstsein. Ein zunehmend einflussreicher 'dritter Weg'.",
+        "group": 3
+      },
+      {
+        "id": "cosmopsychism",
+        "name": "Cosmopsychism",
+        "description": "Der Kosmos als Ganzes besitzt Bewusstsein (top-down), individuelle Geister leiten sich daraus ab — umgeht das Kombinationsproblem, erzeugt aber ein 'Ableitungsproblem'. Goffs 'agentiver Kosmopsychismus'.",
+        "group": 3
+      },
+      {
+        "id": "iit",
+        "name": "Integrated Information Theory (IIT)",
+        "description": "Bewusstsein ist identisch mit integrierter Information (Φ) — ausgehend von fünf phänomenologischen Axiomen. Höheres Φ bedeutet mehr Bewusstsein. Mathematisch rigorose, empirisch testbare Vorhersagen.",
+        "group": 4
+      },
+      {
+        "id": "gwt",
+        "name": "Global Workspace Theory",
+        "description": "Information wird bewusst, wenn sie in einen 'globalen Arbeitsraum' eintritt und breit ausgestrahlt wird — Theater-Metapher: Bewusstsein als Scheinwerfer auf der Bühne. Erklärt Zugangs- aber nicht phänomenales Bewusstsein.",
+        "group": 4
+      },
+      {
+        "id": "hot",
+        "name": "Higher-Order Theories",
+        "description": "Ein mentaler Zustand wird bewusst, wenn eine Meta-Repräsentation höherer Ordnung auf ihn gerichtet ist — Rosenthals Higher-Order Thought, Lycans Higher-Order Perception. Das 'Felsen-Problem' bleibt ungelöst.",
+        "group": 4
+      },
+      {
+        "id": "ast",
+        "name": "Attention Schema Theory",
+        "description": "Subjektives Bewusstsein ist das interne Modell des Gehirns von seiner eigenen Aufmerksamkeit — ein schematisches Modell ohne mechanistische Details, das das Gehirn fälschlich als 'mysteriöse Bewusstheit' interpretiert.",
+        "group": 4
+      },
+      {
+        "id": "biological_naturalism",
+        "name": "Biological Naturalism",
+        "description": "Alle mentalen Phänomene werden durch neurobiologische Prozesse verursacht und sind höherstufige Merkmale des Gehirns — kausal reduzierbar aber ontologisch irreduzibel. Searles Chinese-Room-Argument.",
+        "group": 1
+      },
+      {
+        "id": "enactivism",
+        "name": "Enactivism",
+        "description": "Kognition entsteht durch aktive Auseinandersetzung eines Organismus mit seiner Umwelt — Autopoiesis, Sinnstiftung, Leib-Geist-Kontinuität. Bewusstsein ist relational über Gehirn-Körper-Welt verteilt.",
+        "group": 5
+      },
+      {
+        "id": "cem_field",
+        "name": "EM Field Theory (CEMI)",
+        "description": "Bewusstsein IST das elektromagnetische Feld des Gehirns — es integriert Information räumlich von Milliarden Neuronen und wirkt über spannungsgesteuerte Ionenkanäle auf neuronale Aktivität zurück.",
+        "group": 1
+      },
+      {
+        "id": "predictive_processing",
+        "name": "Predictive Processing / Free Energy Principle",
+        "description": "Alle lebenden Systeme minimieren variationelle freie Energie — Bewusstsein entsteht durch Präzisionsgewichtung interzeptiver Vorhersagefehler. Seths 'kontrollierte Halluzination', Fristons Markovianischer Monismus.",
+        "group": 5
+      },
+      {
+        "id": "process_philosophy",
+        "name": "Process Philosophy (Whitehead)",
+        "description": "Realität besteht aus dynamischen 'tatsächlichen Erfahrungsanlässen', nicht aus statischen Substanzen — Panexperientialismus. Bewusstsein ist ein Modus einer grundlegenderen Erfahrungsqualität in aller Wirklichkeit.",
+        "group": 3
+      },
+      {
+        "id": "dual_aspect_monism",
+        "name": "Dual-Aspect Monism (Pauli-Jung)",
+        "description": "Psyche und Physis sind komplementäre Aspekte einer tieferen psychophysisch neutralen Realität ('unus mundus') — Pauli und Jung zogen Parallelen zur Quantenkomplementarität. Atmanspacher formalisiert diesen Rahmen.",
+        "group": 3
+      },
+      {
+        "id": "reflexive_monism",
+        "name": "Reflexive Monism",
+        "description": "Bewusstsein ist weder rein 'im Gehirn' noch 'in der Welt' — ein reflexiver Prozess, in dem das Universum durch Beobachter seiner selbst bewusst wird. Erste- und Dritte-Person-Perspektive sind komplementär.",
+        "group": 3
+      },
+      {
+        "id": "orch_or",
+        "name": "Orchestrated Objective Reduction (Orch-OR)",
+        "description": "Quantensuperposition in Mikrotubuli-Tubulinproteinen kollabiert durch Gravitationsselbstenergie (Diósi-Penrose-Kriterium) — diese orchestrierten Reduktionen erzeugen diskrete Momente bewusster Erfahrung.",
+        "group": 6
+      },
+      {
+        "id": "stapp_quantum",
+        "name": "Stapp's Quantum Mind",
+        "description": "Bewusste Intentionen wählen die quantenmechanische 'Frage' an die Natur — der Quanten-Zeno-Effekt erlaubt mentaler Anstrengung, bevorzugte neuronale Muster zu stabilisieren. Klinisch auf OCD-Therapie angewandt.",
+        "group": 6
+      },
+      {
+        "id": "von_neumann_wigner",
+        "name": "Von Neumann-Wigner Interpretation",
+        "description": "Bewusstsein verursacht den Kollaps der Wellenfunktion — historisch bedeutsam, aber heute weitgehend verworfen. Wigners-Freund-Paradoxon zeigt Anfälligkeit für unendlichen Regress und Solipsismus.",
+        "group": 6
+      },
+      {
+        "id": "qbism",
+        "name": "QBism (Quantum Bayesianism)",
+        "description": "Quantenmechanik als Werkzeug eines Agenten zur Organisation von Überzeugungen über zukünftige Erfahrungen — Wellenfunktion als subjektive bayesische Wahrscheinlichkeit. Stellt den erfahrenden Agenten ins Zentrum.",
+        "group": 6
+      },
+      {
+        "id": "rqm",
+        "name": "Relational Quantum Mechanics",
+        "description": "Quantenzustände beschreiben Relationen zwischen Systemen, nicht absolute Eigenschaften — Bewusstsein wird explizit ausgeschlossen. Jedes physische System kann Beobachter sein. Kontrapunkt zu bewusstseinsbasierten Interpretationen.",
+        "group": 6
+      },
+      {
+        "id": "bohm_implicate",
+        "name": "Bohm's Implicate Order",
+        "description": "Realität hat eine explizite (entfaltete) und eine implizite (eingefaltete, verbundene) Ordnung — Bewusstsein und Materie emergieren als komplementäre Aspekte. Pribrams holonomische Gehirntheorie erweitert dies.",
+        "group": 6
+      },
+      {
+        "id": "fisher_posner",
+        "name": "Fisher's Posner Molecules",
+        "description": "Phosphor-31-Kernspins als 'neuronale Qubits' — verschränkte Phosphat-Ionenpaare in Posner-Molekülen (Ca₉(PO₄)₆) schützen Spins stundenlang vor Dekohärenz. Biologisch plausibelste Quanten-Kognitions-Hypothese.",
+        "group": 6
+      },
+      {
+        "id": "quantum_free_will",
+        "name": "Quantum Free Will",
+        "description": "Kanes 'Self-Forming Actions' — Quantenindeterminiertheit liefert ontologische Offenheit für echte Handlungsfreiheit. Eccles/Beck: Quantentunneln an synaptischen Spalten. Der 'Glücks-Einwand' bleibt zentrale Kritik.",
+        "group": 6
+      },
+      {
+        "id": "hard_problem",
+        "name": "Hard Problem of Consciousness",
+        "description": "Chalmers' Unterscheidung: Das 'leichte Problem' (funktionale Erklärung) vs. das 'schwere Problem' — warum gibt es überhaupt subjektive Erfahrung? Das Zombie-Argument zeigt die logische Möglichkeit eines Wesens ohne Erleben.",
+        "group": 7
+      },
+      {
+        "id": "mysterianism",
+        "name": "Mysterianism (McGinn)",
+        "description": "Die menschliche Kognition ist konstitutionell unfähig, Bewusstsein zu verstehen — kognitive Geschlossenheit. Chomskys Parallele: 'Probleme' (lösbar) vs. 'Mysterien' (jenseits unserer kognitiven Architektur).",
+        "group": 7
+      },
+      {
+        "id": "knowledge_argument",
+        "name": "Knowledge Argument (Mary's Room)",
+        "description": "Mary kennt alle physischen Fakten über Farbwahrnehmung — sieht erstmals Rot und lernt etwas Neues. Da sie bereits alles physische Wissen hatte, muss das Gelernte nicht-physisch sein. Jackson selbst widerrief später.",
+        "group": 7
+      },
+      {
+        "id": "nagel_bat",
+        "name": "Nagel's 'What Is It Like to Be a Bat?'",
+        "description": "Ein Organismus ist bewusst, wenn es 'wie etwas ist', dieser Organismus zu sein — je objektiver die Beschreibung, desto weiter entfernt vom subjektiven Charakter. Zeigt Grenzen des Drittpersonalen.",
+        "group": 7
+      },
+      {
+        "id": "explanatory_gap",
+        "name": "Explanatory Gap (Levine)",
+        "description": "Selbst wenn 'Schmerz = C-Faser-Aktivierung' ontologisch wahr ist, fehlt die erklärende Transparenz von 'Wasser = H₂O'. Wir können nicht verstehen, WARUM C-Faser-Aktivierung sich so anfühlt — die Relation erscheint willkürlich.",
+        "group": 7
+      },
+      {
+        "id": "analytical_idealism",
+        "name": "Analytical Idealism (Kastrup)",
+        "description": "Bewusstsein ist die einzige ontologische Grundkategorie — individuelle Subjekte sind 'dissoziierte Alter' eines universellen Bewusstseins (analog zu DIS). Naturalistisch und reduktionistisch, gestützt auf Psychedelik-Forschung.",
+        "group": 8
+      },
+      {
+        "id": "panqualityism",
+        "name": "Panqualityism",
+        "description": "Fundamentale Entitäten instantiieren Qualitäten (qualia-ähnlich) OHNE Bewusstheit dieser Qualitäten — Makro-Bewusstsein entsteht, wenn diese besitzerlosen Qualitäten durch einen funktionalen Mechanismus 'erleuchtet' werden.",
+        "group": 2
+      },
+      {
+        "id": "phenomenal_intentionality",
+        "name": "Phenomenal Intentionality Theory",
+        "description": "Intentionalität (die 'Gerichtetheit' mentaler Zustände) gründet fundamental in phänomenalem Bewusstsein — Bewusstsein ist die Quelle, aus der alle Bedeutung und Referenz fließen. Kehrt das Naturalisierungsprogramm um.",
+        "group": 8
+      },
+      {
+        "id": "anomalous_monism",
+        "name": "Anomalous Monism (Davidson)",
+        "description": "Alle Ereignisse (auch mentale) sind physisch, aber mentale Eigenschaften lassen sich nicht durch strikte Gesetze auf physische reduzieren — Token-Identität ohne Typ-Identität. Adressiert NICHT phänomenales Bewusstsein.",
+        "group": 1
+      },
+      {
+        "id": "epiphenomenalism",
+        "name": "Epiphenomenalism",
+        "description": "Bewusstsein existiert, bewirkt aber nichts — wie die Dampfpfeife einer Lokomotive. Logisch zwingend bei kausaler Geschlossenheit der Physik plus Nicht-Physikalität des Bewusstseins. Libet-Experimente als Indiz.",
+        "group": 2
+      },
+      {
+        "id": "open_individualism",
+        "name": "Open Individualism",
+        "description": "Es gibt nur ein Subjekt — Individuation ist illusorisch. Kolak, Zuboff und Parfit entwickelten Varianten. Tiefe Konvergenz mit Advaita Vedanta, analytischem Idealismus und Kosmopsychismus.",
+        "group": 8
+      },
+      {
+        "id": "advaita_vedanta",
+        "name": "Advaita Vedanta",
+        "description": "Brahman (reines Bewusstsein) ist die einzige Realität — die phänomenale Welt ist Maya (Illusion/Schleier). Individuelle Seelen (Atman) sind identisch mit Brahman. Jahrtausendealte Tradition mit modernen philosophischen Echos.",
+        "group": 8
+      },
+      {
+        "id": "yogacara",
+        "name": "Yogācāra Buddhism",
+        "description": "Nur-Bewusstsein-Schule des Buddhismus — die wahrgenommene Welt ist Projektion eines Speicherbewusstseins (ālayavijñāna). Strukturelle Parallelen zu analytischem Idealismus und prädiktiver Verarbeitung.",
+        "group": 8
+      },
+      {
+        "id": "umezawa_vitiello",
+        "name": "Umezawa-Vitiello Quantum Field Theory",
+        "description": "Nutzt Quantenfeldtheorie (nicht Standard-QM) zur Modellierung von Bewusstsein — Erinnerungszustände als Vakuumzustände von Quantenfeldern. Vitiellos dissipatives Modell liefert unendlich viele Vakuumzustände.",
+        "group": 6
+      }
+    ],
+    "links": [
+      {
+        "source": "materialism",
+        "target": "property_dualism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "materialism",
+        "target": "panpsychism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "materialism",
+        "target": "illusionism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "materialism",
+        "target": "biological_naturalism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "materialism",
+        "target": "anomalous_monism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "materialism",
+        "target": "analytical_idealism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "materialism",
+        "target": "hard_problem",
+        "label": "herausgefordert durch"
+      },
+      {
+        "source": "materialism",
+        "target": "knowledge_argument",
+        "label": "herausgefordert durch"
+      },
+      {
+        "source": "materialism",
+        "target": "explanatory_gap",
+        "label": "herausgefordert durch"
+      },
+      {
+        "source": "property_dualism",
+        "target": "panpsychism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "property_dualism",
+        "target": "epiphenomenalism",
+        "label": "führt zu"
+      },
+      {
+        "source": "property_dualism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "property_dualism",
+        "target": "panqualityism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "panpsychism",
+        "target": "cosmopsychism",
+        "label": "invertiert durch"
+      },
+      {
+        "source": "panpsychism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "panpsychism",
+        "target": "process_philosophy",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "panpsychism",
+        "target": "iit",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "panpsychism",
+        "target": "panqualityism",
+        "label": "variiert durch"
+      },
+      {
+        "source": "panpsychism",
+        "target": "advaita_vedanta",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "illusionism",
+        "target": "ast",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "illusionism",
+        "target": "hard_problem",
+        "label": "widerspricht"
+      },
+      {
+        "source": "illusionism",
+        "target": "knowledge_argument",
+        "label": "widerspricht"
+      },
+      {
+        "source": "illusionism",
+        "target": "nagel_bat",
+        "label": "widerspricht"
+      },
+      {
+        "source": "illusionism",
+        "target": "phenomenal_intentionality",
+        "label": "widerspricht"
+      },
+      {
+        "source": "neutral_monism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "neutral_monism",
+        "target": "dual_aspect_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "neutral_monism",
+        "target": "process_philosophy",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "neutral_monism",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "neutral_monism",
+        "target": "property_dualism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "russellian_monism",
+        "target": "qbism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "russellian_monism",
+        "target": "rqm",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "russellian_monism",
+        "target": "hard_problem",
+        "label": "adressiert"
+      },
+      {
+        "source": "russellian_monism",
+        "target": "explanatory_gap",
+        "label": "adressiert"
+      },
+      {
+        "source": "cosmopsychism",
+        "target": "analytical_idealism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "cosmopsychism",
+        "target": "advaita_vedanta",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "cosmopsychism",
+        "target": "open_individualism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "cosmopsychism",
+        "target": "reflexive_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "iit",
+        "target": "gwt",
+        "label": "rivalisiert mit"
+      },
+      {
+        "source": "iit",
+        "target": "panpsychism",
+        "label": "impliziert"
+      },
+      {
+        "source": "iit",
+        "target": "cem_field",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "iit",
+        "target": "hard_problem",
+        "label": "adressiert"
+      },
+      {
+        "source": "gwt",
+        "target": "hot",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "gwt",
+        "target": "ast",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "gwt",
+        "target": "hard_problem",
+        "label": "umgeht"
+      },
+      {
+        "source": "gwt",
+        "target": "predictive_processing",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hot",
+        "target": "ast",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hot",
+        "target": "illusionism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hot",
+        "target": "nagel_bat",
+        "label": "widerspricht"
+      },
+      {
+        "source": "ast",
+        "target": "predictive_processing",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "ast",
+        "target": "illusionism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "biological_naturalism",
+        "target": "epiphenomenalism",
+        "label": "führt zu (laut Kim)"
+      },
+      {
+        "source": "biological_naturalism",
+        "target": "property_dualism",
+        "label": "verkleidet als (laut Kim)"
+      },
+      {
+        "source": "biological_naturalism",
+        "target": "orch_or",
+        "label": "widerspricht"
+      },
+      {
+        "source": "biological_naturalism",
+        "target": "enactivism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "enactivism",
+        "target": "predictive_processing",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "enactivism",
+        "target": "process_philosophy",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "enactivism",
+        "target": "yogacara",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "enactivism",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "enactivism",
+        "target": "gwt",
+        "label": "widerspricht"
+      },
+      {
+        "source": "cem_field",
+        "target": "iit",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "cem_field",
+        "target": "materialism",
+        "label": "erweitert"
+      },
+      {
+        "source": "cem_field",
+        "target": "hard_problem",
+        "label": "herausgefordert durch"
+      },
+      {
+        "source": "predictive_processing",
+        "target": "dual_aspect_monism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "predictive_processing",
+        "target": "enactivism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "predictive_processing",
+        "target": "yogacara",
+        "label": "strukturelle Parallele"
+      },
+      {
+        "source": "predictive_processing",
+        "target": "hard_problem",
+        "label": "umgeht"
+      },
+      {
+        "source": "process_philosophy",
+        "target": "panpsychism",
+        "label": "erweitert"
+      },
+      {
+        "source": "process_philosophy",
+        "target": "enactivism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "process_philosophy",
+        "target": "dual_aspect_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "process_philosophy",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "dual_aspect_monism",
+        "target": "neutral_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "dual_aspect_monism",
+        "target": "bohm_implicate",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "dual_aspect_monism",
+        "target": "predictive_processing",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "dual_aspect_monism",
+        "target": "reflexive_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "reflexive_monism",
+        "target": "cosmopsychism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "reflexive_monism",
+        "target": "enactivism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "reflexive_monism",
+        "target": "qbism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "orch_or",
+        "target": "stapp_quantum",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "orch_or",
+        "target": "fisher_posner",
+        "label": "rivalisiert mit"
+      },
+      {
+        "source": "orch_or",
+        "target": "hard_problem",
+        "label": "adressiert"
+      },
+      {
+        "source": "orch_or",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "orch_or",
+        "target": "gwt",
+        "label": "widerspricht"
+      },
+      {
+        "source": "orch_or",
+        "target": "umezawa_vitiello",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "stapp_quantum",
+        "target": "von_neumann_wigner",
+        "label": "erweitert"
+      },
+      {
+        "source": "stapp_quantum",
+        "target": "quantum_free_will",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "stapp_quantum",
+        "target": "qbism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "von_neumann_wigner",
+        "target": "qbism",
+        "label": "abgelöst durch"
+      },
+      {
+        "source": "von_neumann_wigner",
+        "target": "rqm",
+        "label": "widerspricht"
+      },
+      {
+        "source": "von_neumann_wigner",
+        "target": "stapp_quantum",
+        "label": "Vorläufer von"
+      },
+      {
+        "source": "qbism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "qbism",
+        "target": "reflexive_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "qbism",
+        "target": "rqm",
+        "label": "rivalisiert mit"
+      },
+      {
+        "source": "rqm",
+        "target": "von_neumann_wigner",
+        "label": "widerspricht"
+      },
+      {
+        "source": "rqm",
+        "target": "orch_or",
+        "label": "widerspricht"
+      },
+      {
+        "source": "bohm_implicate",
+        "target": "dual_aspect_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "bohm_implicate",
+        "target": "process_philosophy",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "bohm_implicate",
+        "target": "advaita_vedanta",
+        "label": "resoniert mit"
+      },
+      {
+        "source": "bohm_implicate",
+        "target": "umezawa_vitiello",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "fisher_posner",
+        "target": "orch_or",
+        "label": "rivalisiert mit"
+      },
+      {
+        "source": "fisher_posner",
+        "target": "umezawa_vitiello",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "fisher_posner",
+        "target": "biological_naturalism",
+        "label": "erweitert"
+      },
+      {
+        "source": "quantum_free_will",
+        "target": "stapp_quantum",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "quantum_free_will",
+        "target": "orch_or",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "quantum_free_will",
+        "target": "epiphenomenalism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "hard_problem",
+        "target": "mysterianism",
+        "label": "erweitert durch"
+      },
+      {
+        "source": "hard_problem",
+        "target": "knowledge_argument",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hard_problem",
+        "target": "nagel_bat",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hard_problem",
+        "target": "explanatory_gap",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "hard_problem",
+        "target": "illusionism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "mysterianism",
+        "target": "nagel_bat",
+        "label": "erweitert"
+      },
+      {
+        "source": "mysterianism",
+        "target": "hard_problem",
+        "label": "radikalisiert"
+      },
+      {
+        "source": "mysterianism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "knowledge_argument",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "knowledge_argument",
+        "target": "illusionism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "knowledge_argument",
+        "target": "property_dualism",
+        "label": "stützt"
+      },
+      {
+        "source": "nagel_bat",
+        "target": "hard_problem",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "nagel_bat",
+        "target": "mysterianism",
+        "label": "Vorläufer von"
+      },
+      {
+        "source": "nagel_bat",
+        "target": "phenomenal_intentionality",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "explanatory_gap",
+        "target": "hard_problem",
+        "label": "stützt"
+      },
+      {
+        "source": "explanatory_gap",
+        "target": "materialism",
+        "label": "herausfordert"
+      },
+      {
+        "source": "explanatory_gap",
+        "target": "russellian_monism",
+        "label": "motiviert"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "cosmopsychism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "advaita_vedanta",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "open_individualism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "yogacara",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "analytical_idealism",
+        "target": "hard_problem",
+        "label": "auflöst"
+      },
+      {
+        "source": "panqualityism",
+        "target": "panpsychism",
+        "label": "variiert"
+      },
+      {
+        "source": "panqualityism",
+        "target": "russellian_monism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "panqualityism",
+        "target": "property_dualism",
+        "label": "erweitert"
+      },
+      {
+        "source": "phenomenal_intentionality",
+        "target": "nagel_bat",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "phenomenal_intentionality",
+        "target": "hard_problem",
+        "label": "stützt"
+      },
+      {
+        "source": "phenomenal_intentionality",
+        "target": "illusionism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "phenomenal_intentionality",
+        "target": "enactivism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "anomalous_monism",
+        "target": "materialism",
+        "label": "erweitert"
+      },
+      {
+        "source": "anomalous_monism",
+        "target": "property_dualism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "anomalous_monism",
+        "target": "epiphenomenalism",
+        "label": "führt zu (laut Kritikern)"
+      },
+      {
+        "source": "epiphenomenalism",
+        "target": "property_dualism",
+        "label": "folgt aus"
+      },
+      {
+        "source": "epiphenomenalism",
+        "target": "quantum_free_will",
+        "label": "widerspricht"
+      },
+      {
+        "source": "epiphenomenalism",
+        "target": "biological_naturalism",
+        "label": "korreliert mit (laut Kim)"
+      },
+      {
+        "source": "epiphenomenalism",
+        "target": "enactivism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "open_individualism",
+        "target": "advaita_vedanta",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "open_individualism",
+        "target": "analytical_idealism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "open_individualism",
+        "target": "cosmopsychism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "open_individualism",
+        "target": "materialism",
+        "label": "widerspricht"
+      },
+      {
+        "source": "advaita_vedanta",
+        "target": "analytical_idealism",
+        "label": "konvergiert mit"
+      },
+      {
+        "source": "advaita_vedanta",
+        "target": "yogacara",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "advaita_vedanta",
+        "target": "bohm_implicate",
+        "label": "resoniert mit"
+      },
+      {
+        "source": "advaita_vedanta",
+        "target": "cosmopsychism",
+        "label": "Vorläufer von"
+      },
+      {
+        "source": "yogacara",
+        "target": "analytical_idealism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "yogacara",
+        "target": "predictive_processing",
+        "label": "strukturelle Parallele"
+      },
+      {
+        "source": "yogacara",
+        "target": "enactivism",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "umezawa_vitiello",
+        "target": "orch_or",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "umezawa_vitiello",
+        "target": "bohm_implicate",
+        "label": "korreliert mit"
+      },
+      {
+        "source": "umezawa_vitiello",
+        "target": "fisher_posner",
+        "label": "korreliert mit"
+      }
+    ]
+  }
+}
