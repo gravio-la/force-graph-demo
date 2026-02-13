@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Search, X, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGraphStore } from "@/store/graphStore";
+import { useFocusMode } from "@/context/FocusModeContext";
 
 export function SearchOverlay() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const { isFocusMode } = useFocusMode();
   
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSearchQuery = useGraphStore((state) => state.setSearchQuery);
@@ -42,7 +44,11 @@ export function SearchOverlay() {
     <>
       {/* Collapsed state - tiny floating button */}
       {!isExpanded && (
-        <div className="fixed top-4 right-4 z-50">
+        <div className={cn(
+          "fixed top-4 right-4 z-50",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <Button
             variant="secondary"
             size="icon"
@@ -61,7 +67,11 @@ export function SearchOverlay() {
 
       {/* Expanded state - search overlay */}
       {isExpanded && (
-        <div className="fixed top-4 right-4 z-50 w-96">
+        <div className={cn(
+          "fixed top-4 right-4 z-50 w-96",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <div
             className={cn(
               "rounded-lg shadow-2xl",

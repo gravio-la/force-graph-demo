@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link2, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OverlayList } from "@/components/OverlayList";
+import { useFocusMode } from "@/context/FocusModeContext";
 import type { LinkTypeLegendItem } from "@/hooks/useLegendData";
 
 interface LinkLegendOverlayProps {
@@ -11,11 +12,16 @@ interface LinkLegendOverlayProps {
 
 export function LinkLegendOverlay({ linkTypes }: LinkLegendOverlayProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { isFocusMode } = useFocusMode();
 
   return (
     <>
       {!isExpanded && (
-        <div className="fixed bottom-6 right-6 z-40">
+        <div className={cn(
+          "fixed bottom-6 right-6 z-40",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <Button
             variant="secondary"
             size="icon"
@@ -33,7 +39,11 @@ export function LinkLegendOverlay({ linkTypes }: LinkLegendOverlayProps) {
       )}
 
       {isExpanded && (
-        <div className="fixed bottom-6 right-6 z-40 w-56">
+        <div className={cn(
+          "fixed bottom-6 right-6 z-40 w-56",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <div
             className={cn(
               "rounded-lg shadow-2xl p-4",

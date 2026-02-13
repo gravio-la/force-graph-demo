@@ -10,7 +10,9 @@ import { ForceGraph3DSettingsModal } from "./components/ForceGraph3DSettingsModa
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { GroupLegendOverlay } from "./components/GroupLegendOverlay";
 import { LinkLegendOverlay } from "./components/LinkLegendOverlay";
+import { FocusModeToggle } from "./components/FocusModeToggle";
 import { ColorMapProvider } from "./context/ColorMapContext";
+import { FocusModeProvider } from "./context/FocusModeContext";
 import { useLegendData } from "./hooks/useLegendData";
 import { useGraphStore } from "./store/graphStore";
 import { decode, stripSimulationState } from "./lib/graphHash";
@@ -70,35 +72,40 @@ export function App() {
   return (
     <ErrorBoundary>
       <ColorMapProvider>
-        <div className="fixed inset-0 w-full h-full bg-background overflow-hidden">
-          {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
-          {/* Key includes currentGraphId to force remount on graph change */}
-          {visualizationMode === "3d" ? (
-            <ForceGraph3DComponent key={`3d-${graphKey}`} />
-          ) : visualizationMode === "cosmo" ? (
-            <CosmographGraph key={`cosmo-${graphKey}`} />
-          ) : (
-            <SigmaGraph key={`2d-${graphKey}`} />
-          )}
-          
-          {/* Graph Selector - Top left */}
-          <GraphSelector />
-          
-          {/* Search Overlay - Top right */}
-          <SearchOverlay />
-          
-          {/* Node Info Overlay - Shows below search */}
-          <NodeInfoOverlay onClose={handleCloseNodeInfo} />
-          
-          {/* Legend overlays - Bottom left (groups), Bottom right (link types) */}
-          <LegendOverlays />
-          
-          {/* Visualization Mode Toggle - Bottom center */}
-          <VisualizationToggle />
-          
-          {/* 3D Settings Modal - shown when 3D mode is active */}
-          {visualizationMode === "3d" && <ForceGraph3DSettingsModal />}
-        </div>
+        <FocusModeProvider>
+          <div className="fixed inset-0 w-full h-full bg-background overflow-hidden">
+            {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
+            {/* Key includes currentGraphId to force remount on graph change */}
+            {visualizationMode === "3d" ? (
+              <ForceGraph3DComponent key={`3d-${graphKey}`} />
+            ) : visualizationMode === "cosmo" ? (
+              <CosmographGraph key={`cosmo-${graphKey}`} />
+            ) : (
+              <SigmaGraph key={`2d-${graphKey}`} />
+            )}
+            
+            {/* Graph Selector - Top left */}
+            <GraphSelector />
+            
+            {/* Search Overlay - Top right */}
+            <SearchOverlay />
+            
+            {/* Node Info Overlay - Shows below search */}
+            <NodeInfoOverlay onClose={handleCloseNodeInfo} />
+            
+            {/* Legend overlays - Bottom left (groups), Bottom right (link types) */}
+            <LegendOverlays />
+            
+            {/* Visualization Mode Toggle - Bottom center */}
+            <VisualizationToggle />
+            
+            {/* Focus Mode Toggle - Right side (mobile only) */}
+            <FocusModeToggle />
+            
+            {/* 3D Settings Modal - shown when 3D mode is active */}
+            {visualizationMode === "3d" && <ForceGraph3DSettingsModal />}
+          </div>
+        </FocusModeProvider>
       </ColorMapProvider>
     </ErrorBoundary>
   );

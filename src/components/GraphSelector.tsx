@@ -15,6 +15,7 @@ import { ConfirmDeleteGraphModal } from "./ConfirmDeleteGraphModal";
 import { cn } from "@/lib/utils";
 import { useGraphStore } from "@/store/graphStore";
 import { useCustomGraphsStore } from "@/store/customGraphsStore";
+import { useFocusMode } from "@/context/FocusModeContext";
 import type { GraphFile } from "@/store/graphStore";
 import { encode, stripSimulationState } from "@/lib/graphHash";
 
@@ -25,6 +26,7 @@ import consciousnessData from "@/data/consciousness_graph.json" with { type: "js
 export function GraphSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [shareFeedback, setShareFeedback] = useState(false);
+  const { isFocusMode } = useFocusMode();
   const currentGraphId = useGraphStore((state) => state.currentGraphId);
   const availableGraphs = useGraphStore((state) => state.availableGraphs);
   const sharedGraph = useGraphStore((state) => state.sharedGraph);
@@ -155,7 +157,11 @@ export function GraphSelector() {
   };
 
   return (
-    <div className="fixed top-4 left-4 z-50">
+    <div className={cn(
+      "fixed top-4 left-4 z-50",
+      "transition-transform duration-500 ease-in-out md:translate-x-0",
+      isFocusMode && "-translate-x-[200%]"
+    )}>
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
           <Button

@@ -3,12 +3,14 @@ import { Box, Globe, Network, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGraphStore } from "@/store/graphStore";
 import { useForceGraph3DSettingsStore } from "@/store/forceGraph3DSettingsStore";
+import { useFocusMode } from "@/context/FocusModeContext";
 
 export function VisualizationToggle() {
   const visualizationMode = useGraphStore((state) => state.visualizationMode);
   const setVisualizationMode = useGraphStore((state) => state.setVisualizationMode);
   const toggleSettings = useForceGraph3DSettingsStore((state) => state.toggleSettings);
   const isSettingsOpen = useForceGraph3DSettingsStore((state) => state.isSettingsOpen);
+  const { isFocusMode } = useFocusMode();
 
   const handle3DClick = (e: React.MouseEvent) => {
     // If clicking on the settings icon area (right side), toggle settings
@@ -26,7 +28,11 @@ export function VisualizationToggle() {
   };
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div className={cn(
+      "fixed bottom-4 left-1/2 -translate-x-1/2 z-50",
+      "transition-transform duration-500 ease-in-out md:translate-y-0",
+      isFocusMode && "translate-y-[200%]"
+    )}>
       <div
         className={cn(
           "flex items-center gap-2 p-2 rounded-full shadow-2xl",

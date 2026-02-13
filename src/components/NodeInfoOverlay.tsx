@@ -4,6 +4,7 @@ import { Info, X, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useColorMap } from "@/context/ColorMapContext";
 import { useGraphStore } from "@/store/graphStore";
+import { useFocusMode } from "@/context/FocusModeContext";
 
 interface NodeInfoOverlayProps {
   onClose: () => void;
@@ -13,6 +14,7 @@ export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const { getGroupColor, getGroupLabel } = useColorMap();
+  const { isFocusMode } = useFocusMode();
   const node = useGraphStore((state) => state.selectedNode);
 
   useEffect(() => {
@@ -31,7 +33,11 @@ export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
     <>
       {/* Collapsed state - info icon FAB */}
       {!isExpanded && (
-        <div className="fixed top-20 right-4 z-50">
+        <div className={cn(
+          "fixed top-20 right-4 z-50",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <Button
             variant="secondary"
             size="icon"
@@ -50,7 +56,11 @@ export function NodeInfoOverlay({ onClose }: NodeInfoOverlayProps) {
 
       {/* Expanded state - node info panel */}
       {isExpanded && (
-        <div className="fixed top-20 right-4 z-50 w-96">
+        <div className={cn(
+          "fixed top-20 right-4 z-50 w-96",
+          "transition-transform duration-500 ease-in-out md:translate-x-0",
+          isFocusMode && "translate-x-[200%]"
+        )}>
           <div
             className={cn(
               "rounded-lg shadow-2xl",
