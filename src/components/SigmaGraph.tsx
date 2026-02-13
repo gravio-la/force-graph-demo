@@ -84,8 +84,6 @@ export function SigmaGraph() {
       const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
       const targetId = typeof link.target === 'object' ? link.target.id : link.target;
       
-      console.log(`Trying to add edge: ${sourceId} -> ${targetId}`);
-      
       try {
         if (graph.hasNode(sourceId) && graph.hasNode(targetId)) {
           graph.addDirectedEdge(sourceId, targetId, {
@@ -102,7 +100,6 @@ export function SigmaGraph() {
       }
     });
 
-    console.log(`Sigma Graph: ${graph.order} nodes, ${graph.size} edges (${edgeCount} added from ${filteredLinks.length} links)`);
 
     // Apply circular layout initially
     circular.assign(graph);

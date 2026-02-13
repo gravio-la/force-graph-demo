@@ -1,19 +1,22 @@
-# 3D Force Graph Explorer
+# Force Graph Explorer (3D & 2D)
 
-A fullscreen interactive 3D/2D force graph visualization application built with React, Bun, Three.js, and Sigma.js.
+A fullscreen interactive force graph visualization application with **dual visualization modes**: 3D and 2D. Built with React, Bun, Three.js, and Sigma.js.
+
+> **Disclaimer:** This project was created as part of a flow coding session with the help of an AI agent for testing concepts. It is experimental and may contain rough edges.
 
 ## Features
+
+- **Dual Visualization Modes (3D & 2D)**
+  - 🎲 **3D Force Graph** – Interactive 3D exploration with `3d-force-graph` and Three.js
+  - 🔗 **2D Network Graph** – Flat network view with Sigma.js and Graphology
+  - Switch between modes anytime with the bottom-center toggle – both views stay in sync
 
 - **Multiple Graph Management**
   - 📊 Store multiple graphs in separate JSON files
   - 🔄 Switch between graphs using the dropdown selector (top-left)
   - 📝 Each graph has metadata (name, description, timestamp)
+  - ✏️ Add and edit custom graphs via the in-app modal (YAML editor)
   - 🆕 Includes empty graph template ready to fill
-
-- **Dual Visualization Modes**
-  - 🎲 3D Force Graph (using `3d-force-graph` and Three.js)
-  - 🔗 2D Network Graph (using Sigma.js and Graphology)
-  - Toggle between modes with the bottom-center button
 
 - **Interactive Elements**
   - Click nodes to view detailed information
@@ -41,7 +44,7 @@ A fullscreen interactive 3D/2D force graph visualization application built with 
 - **3D Visualization**: 3d-force-graph + Three.js
 - **2D Visualization**: Sigma.js + Graphology
 - **State**: Zustand
-- **UI Components**: Radix UI (via shadcn)
+- **UI Components**: Radix UI (via shadcn), CodeMirror (YAML graph editor)
 
 ## Getting Started
 
@@ -65,13 +68,15 @@ bun run start
 src/
 ├── components/
 │   ├── ForceGraph3D.tsx       # 3D force graph visualization
-│   ├── SigmaGraph.tsx         # 2D sigma.js visualization
+│   ├── SigmaGraph.tsx         # 2D network graph visualization
 │   ├── SearchOverlay.tsx      # Search and filter UI
 │   ├── NodeInfoOverlay.tsx    # Node details panel
 │   ├── VisualizationToggle.tsx # 2D/3D mode switch
 │   ├── GraphSelector.tsx      # Multi-graph dropdown selector
+│   ├── GraphEditorModal.tsx   # Add/edit graphs (YAML)
 │   └── ui/                    # shadcn components
 ├── data/
+│   ├── consciousness_graph.json   # Default graph – philosophy of mind
 │   ├── philosophical-concepts.json # Steiner's philosophy graph
 │   ├── system-architecture.json    # System architecture example
 │   └── empty-graph.json            # Empty template graph
@@ -92,17 +97,19 @@ Graphs are stored as JSON files in `src/data/` directory. Each file contains:
 
 ### Available Graphs
 
-1. **philosophical-concepts.json** - Steiner's philosophical problem
-2. **system-architecture.json** - Microservices architecture example
-3. **empty-graph.json** - Empty template ready to fill
+1. **consciousness_graph.json** – Philosophy of mind (Bewusstsein) – *default*
+2. **philosophical-concepts.json** – Steiner's philosophical problem
+3. **system-architecture.json** – Microservices architecture example
+4. **empty-graph.json** – Empty template ready to fill
 
 ### Managing Graphs
 
-For detailed instructions on creating, editing, and managing graphs, see **[GRAPHS.md](./GRAPHS.md)**
+For detailed instructions on creating, editing, and managing graphs, see **[GRAPHS.md](./GRAPHS.md)**.
 
 Quick start:
 - Click the dropdown in the top-left to switch between graphs
-- Edit JSON files in `src/data/` to modify graphs
+- Use **Add new graph** in the dropdown to create custom graphs (YAML editor)
+- Edit built-in graphs in `src/data/` or create new JSON files
 - Use `empty-graph.json` as a template for new graphs
 
 ### Node Structure

@@ -17,9 +17,7 @@ import { useCustomGraphsStore } from "@/store/customGraphsStore";
 import type { GraphFile } from "@/store/graphStore";
 
 // Import JSON files using Import Attributes syntax
-import philosophicalConceptsData from "@/data/philosophical-concepts.json" with { type: "json" };
 import systemArchitectureData from "@/data/system-architecture.json" with { type: "json" };
-import emptyGraphData from "@/data/empty-graph.json" with { type: "json" };
 import consciousnessData from "@/data/consciousness_graph.json" with { type: "json" };
 
 export function GraphSelector() {
@@ -35,22 +33,10 @@ export function GraphSelector() {
   useEffect(() => {
     const builtIn: GraphFile[] = [
       {
-        id: "philosophical-concepts",
-        path: "/src/data/philosophical-concepts.json",
-        metadata: philosophicalConceptsData.metadata,
-        graph: philosophicalConceptsData.graph as any,
-      },
-      {
         id: "system-architecture",
         path: "/src/data/system-architecture.json",
         metadata: systemArchitectureData.metadata,
         graph: systemArchitectureData.graph as any,
-      },
-      {
-        id: "empty-graph",
-        path: "/src/data/empty-graph.json",
-        metadata: emptyGraphData.metadata,
-        graph: emptyGraphData.graph as any,
       },
       {
         id: "consciousness",
