@@ -36,8 +36,14 @@ export interface GraphFile {
   graph: GraphData;
 }
 
+export interface SharedGraphState {
+  graph: GraphData;
+  metadata: GraphMetadata;
+}
+
 interface GraphStore {
   graphData: GraphData;
+  sharedGraph: SharedGraphState | null;
   selectedNode: GraphNode | null;
   searchQuery: string;
   visualizationMode: "3d" | "cosmo" | "2d";
@@ -48,6 +54,7 @@ interface GraphStore {
   setSearchQuery: (query: string) => void;
   setVisualizationMode: (mode: "3d" | "cosmo" | "2d") => void;
   setGraphData: (data: GraphData) => void;
+  setSharedGraph: (data: SharedGraphState | null) => void;
   loadGraph: (graphId: string) => Promise<void>;
   setAvailableGraphs: (graphs: GraphFile[]) => void;
   setBuiltInGraphs: (builtIn: GraphFile[]) => void;
@@ -61,6 +68,7 @@ const defaultGraphData: GraphData = {
 
 export const useGraphStore = create<GraphStore>((set, get) => ({
   graphData: defaultGraphData,
+  sharedGraph: null,
   selectedNode: null,
   searchQuery: "",
   visualizationMode: "3d",
@@ -72,6 +80,7 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
   setSearchQuery: (query) => set({ searchQuery: query }),
   setVisualizationMode: (mode) => set({ visualizationMode: mode }),
   setGraphData: (data) => set({ graphData: data }),
+  setSharedGraph: (data) => set({ sharedGraph: data }),
   setAvailableGraphs: (graphs) => set({ availableGraphs: graphs }),
 
   setBuiltInGraphs: (builtIn) =>
@@ -105,9 +114,13 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
       set({ 
         graphData: clonedGraph,
         currentGraphId: graphId,
+        sharedGraph: null,
         selectedNode: null,
         searchQuery: ''
       });
+      if (typeof window !== "undefined" && window.history.replaceState) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
     }
   },
 }));

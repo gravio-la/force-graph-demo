@@ -11,7 +11,7 @@ export function SearchOverlay() {
   
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSearchQuery = useGraphStore((state) => state.setSearchQuery);
-  const graphData = useGraphStore((state) => state.graphData);
+  const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
 
   // Get search suggestions from graph data
   const searchSuggestions = graphData.nodes.map((node) => node.name);

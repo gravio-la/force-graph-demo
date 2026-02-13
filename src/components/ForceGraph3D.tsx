@@ -15,7 +15,7 @@ export function ForceGraph3DComponent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<ForceGraphInstance | null>(null);
   
-  const graphData = useGraphStore((state) => state.graphData);
+  const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
   const settings = useSettingsStore((state) => state.settings);
@@ -24,11 +24,14 @@ export function ForceGraph3DComponent() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Pass a clone so the library mutates it instead of the store (keeps sharedGraph/graphData pristine)
+    const dataForLibrary = JSON.parse(JSON.stringify(graphData));
+
     // Initialize the force graph with CSS2DRenderer for HTML labels
     const graph = ForceGraph3D({
       extraRenderers: [new CSS2DRenderer()]
     })(containerRef.current)
-      .graphData(graphData)
+      .graphData(dataForLibrary)
       .nodeLabel("name")
       .nodeColor((node: any) => getGroupColor(node.group))
       .nodeOpacity(settings.nodeOpacity)
@@ -64,7 +67,7 @@ export function ForceGraph3DComponent() {
         return troikaText;
       })
       .linkThreeObjectExtend(true)
-      .linkPositionUpdate((obj: THREE.Object3D, { start, end }: any, link: any) => {
+      .linkPositionUpdate((obj: THREE.Object3D & { sync: () => void, fontSize: number }, { start, end }: any, link: any) => {
         // Midpoint
         const mid = new THREE.Vector3(
           (start.x + end.x) / 2,
@@ -83,6 +86,7 @@ export function ForceGraph3DComponent() {
         const camera = graph.camera();
         const distance = mid.distanceTo(camera.position);
         obj.visible = distance < EDGE_LABEL_LOD_THRESHOLD;
+
 
         // Optional: scale font size inversely with distance for depth cue
         if (obj.visible && typeof obj.sync === "function") {
@@ -128,8 +132,8 @@ export function ForceGraph3DComponent() {
     const query = searchQuery.toLowerCase();
     
     if (!query) {
-      // Reset all nodes to visible
-      graphRef.current.graphData(graphData);
+      // Reset all nodes to visible (pass clone so library does not mutate store)
+      graphRef.current.graphData(JSON.parse(JSON.stringify(graphData)));
       return;
     }
 
@@ -143,14 +147,13 @@ export function ForceGraph3DComponent() {
     // Filter links to only show connections between visible nodes
     const filteredLinks = graphData.links.filter(
       (link: any) =>
-        filteredNodeIds.has(link.source.id || link.source) &&
-        filteredNodeIds.has(link.target.id || link.target)
+        filteredNodeIds.has(link.source?.id ?? link.source) &&
+        filteredNodeIds.has(link.target?.id ?? link.target)
     );
 
-    graphRef.current.graphData({
-      nodes: filteredNodes,
-      links: filteredLinks,
-    });
+    graphRef.current.graphData(
+      JSON.parse(JSON.stringify({ nodes: filteredNodes, links: filteredLinks }))
+    );
   }, [searchQuery, graphData]);
 
   return (

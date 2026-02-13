@@ -9,7 +9,7 @@ import type { GraphNode } from "@/store/graphStore";
 // We pass raw points/links with pointIndexBy and link index columns (like the official Basic usage example).
 
 export function CosmographGraph() {
-  const graphData = useGraphStore((state) => state.graphData);
+  const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
 

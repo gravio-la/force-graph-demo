@@ -11,12 +11,15 @@ export function SigmaGraph() {
   const sigmaRef = useRef<Sigma | null>(null);
   const graphRef = useRef<Graph | null>(null);
   
-  const graphData = useGraphStore((state) => state.graphData);
+  const graphData = useGraphStore((state) => state.sharedGraph?.graph ?? state.graphData);
   const searchQuery = useGraphStore((state) => state.searchQuery);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // Work on a clone so layout (forceAtlas2, etc.) does not mutate the store
+    const data = JSON.parse(JSON.stringify(graphData));
 
     // Create a new graph (directed graph to show arrows)
     const graph = new Graph({ multi: false, type: "directed" });
@@ -25,12 +28,12 @@ export function SigmaGraph() {
     // Filter nodes based on search query
     const query = searchQuery.toLowerCase();
     const filteredNodes = query
-      ? graphData.nodes.filter(
+      ? data.nodes.filter(
           (node) =>
             node.name?.toLowerCase().includes(query) ||
             node.id.toLowerCase().includes(query)
         )
-      : graphData.nodes;
+      : data.nodes;
 
     const filteredNodeIds = new Set(filteredNodes.map((n) => n.id));
 
@@ -47,14 +50,9 @@ export function SigmaGraph() {
       });
     });
 
-    console.log(`Added ${graph.order} nodes`);
-    console.log(`Available node IDs:`, Array.from(graph.nodes()));
-    console.log(`Total links in graphData:`, graphData.links.length);
-    console.log(`First link:`, graphData.links[0]);
-
     // Add edges (only between visible nodes)
     // Handle both string IDs and object references
-    const filteredLinks = graphData.links.filter((link) => {
+    const filteredLinks = data.links.filter((link) => {
       const sourceId = typeof link.source === 'object' && link.source !== null && 'id' in link.source 
         ? (link.source as any).id 
         : link.source;
@@ -64,8 +62,6 @@ export function SigmaGraph() {
       return filteredNodeIds.has(sourceId) && filteredNodeIds.has(targetId);
     });
 
-    console.log(`Filtered ${filteredLinks.length} links to add`);
-    
     let edgeCount = 0;
     filteredLinks.forEach((link, index) => {
       const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
@@ -79,8 +75,6 @@ export function SigmaGraph() {
             color: "#aaaaaa",
           });
           edgeCount++;
-        } else {
-          console.warn(`Missing nodes for edge: ${sourceId} (${graph.hasNode(sourceId)}) -> ${targetId} (${graph.hasNode(targetId)})`);
         }
       } catch (error) {
         console.error(`Error adding edge ${sourceId} -> ${targetId}:`, error);

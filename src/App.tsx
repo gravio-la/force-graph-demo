@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ForceGraph3DComponent } from "./components/ForceGraph3D";
 import { CosmographGraph } from "./components/CosmographGraph";
 import { SigmaGraph } from "./components/SigmaGraph";
@@ -9,12 +10,45 @@ import { SettingsFAB } from "./components/SettingsFAB";
 import { SettingsPanel } from "./components/SettingsPanel";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { useGraphStore } from "./store/graphStore";
+import { decode, stripSimulationState } from "./lib/graphHash";
 import "./index.css";
 
+function useHashGraphSync() {
+  const setSharedGraph = useGraphStore((state) => state.setSharedGraph);
+
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) {
+        setSharedGraph(null);
+        return;
+      }
+      try {
+        const { graph, metadata } = decode(hash);
+        const cleanGraph = stripSimulationState(graph);
+        setSharedGraph({
+          graph: JSON.parse(JSON.stringify(cleanGraph)),
+          metadata,
+        });
+      } catch (err) {
+        console.warn("Failed to decode graph from URL hash:", err);
+        setSharedGraph(null);
+      }
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, [setSharedGraph]);
+}
+
 export function App() {
+  useHashGraphSync();
   const visualizationMode = useGraphStore((state) => state.visualizationMode);
   const currentGraphId = useGraphStore((state) => state.currentGraphId);
+  const sharedGraph = useGraphStore((state) => state.sharedGraph);
   const setSelectedNode = useGraphStore((state) => state.setSelectedNode);
+  const graphKey = sharedGraph ? "url" : currentGraphId;
 
   const handleCloseNodeInfo = () => {
     setSelectedNode(null);
@@ -26,11 +60,11 @@ export function App() {
         {/* Visualization - Fullscreen (3D, Cosmo, or 2D based on mode) */}
         {/* Key includes currentGraphId to force remount on graph change */}
         {visualizationMode === "3d" ? (
-          <ForceGraph3DComponent key={`3d-${currentGraphId}`} />
+          <ForceGraph3DComponent key={`3d-${graphKey}`} />
         ) : visualizationMode === "cosmo" ? (
-          <CosmographGraph key={`cosmo-${currentGraphId}`} />
+          <CosmographGraph key={`cosmo-${graphKey}`} />
         ) : (
-          <SigmaGraph key={`2d-${currentGraphId}`} />
+          <SigmaGraph key={`2d-${graphKey}`} />
         )}
         
         {/* Graph Selector - Top left */}
